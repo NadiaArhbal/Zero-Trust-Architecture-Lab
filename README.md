@@ -32,6 +32,8 @@ sudo iptables -A INPUT -i lo -j ACCEPT
 sudo iptables -A INPUT -i tailscale0 -j ACCEPT
 sudo iptables -P INPUT DROP
 ```
+<img width="825" height="358" alt="image" src="https://github.com/user-attachments/assets/f2ad2e4f-0f9e-42fc-b8f8-2e1854380a65" />
+
 
 ---
 
@@ -40,6 +42,8 @@ Replaced traditional static secrets (vulnerable SSH private keys on disk or pass
 * **Host Hardening:** Complete disabling of `PubkeyAuthentication` and `PasswordAuthentication` on global network interfaces.
 * **SSH Interception:** Delegated SSH access validation to the Tailscale Control Plane.
 * **DevOps Resiliency:** Integrated a conditional `Match Address 127.0.0.1` gateway to preserve secure local Vagrant maintenance.
+
+<img width="546" height="287" alt="image" src="https://github.com/user-attachments/assets/ddbd22b6-5b6a-42e9-ace2-abce84ec2f49" />
 
 ---
 
@@ -51,12 +55,17 @@ If the Web application layer gets compromised, the system uses deep Defense-in-D
   * `RestrictAddressFamilies=AF_UNIX` (Completely blocks outbound internet requests, **neutralizing Reverse Shells**).
   * `ProtectHome=yes` & `PrivateTmp=yes` (File system isolation).
   * `NoNewPrivileges=yes` (Prevents local SUID root privilege escalations).
+    
+<img width="730" height="491" alt="image" src="https://github.com/user-attachments/assets/55d42984-4787-4889-8900-f29cf0a6fad4" />
 
 ---
 
 ### 4. Application Gateway & Contextual MFA (Layer 7 PEP)
 * **Continuous L7 Verification:** Nginx implements an automated `auth_request /lmauth` callback sub-request. No static or dynamic file is served without explicit active token validation by LemonLDAP::NG.
 * **Multi-Factor Authentication:** Enforced **TOTP (Time-based One-Time Password)** registration on the SSO portal combined with contextual endpoint validation.
+
+<img width="333" height="182" alt="image" src="https://github.com/user-attachments/assets/56419c4a-289f-4e95-a40b-1d91f7f53ae3" />
+<img width="710" height="363" alt="image" src="https://github.com/user-attachments/assets/6b723f8d-9fb0-45fb-b628-be6850bf1d84" />
 
 ---
 
